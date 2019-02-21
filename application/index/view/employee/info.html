@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+{include file="common/head" title="个人资料"}
+<body class="no-skin">
+	{include file="common/navbar"}
+	<div class="main-container" id="main-container">
+		{include file="common/sidebar"}
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="index.html">首页</a>
+						</li>
+						<li>
+							<a href="#">个人中心</a>
+						</li>
+						<li class="active">个人资料</li>
+					</ul>
+				</div>
+				<div class="page-content">
+					{include file="common/settings"}
+					<div class="row">
+						<div class="col-xs-12">
+							<form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 账号 </label>
+									<div class="col-sm-9">
+										<input type="text" disabled="disabled" class="rcol-xs-10 col-sm-5" value="{$info['user_code']}">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">无法修改</span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 真实姓名 </label>
+									<div class="col-sm-9">
+										<input type="text" class="rcol-xs-10 col-sm-5" name="real_name" value="{$info['real_name']}">
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 用户密码 </label>
+									<div class="col-sm-9">
+										<input type="password" placeholder="用户密码" class="col-xs-10 col-sm-5" name="user_pwd" value="">
+										<span class="help-inline col-xs-12 col-sm-7">
+										<span class="middle">留空不修改</span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-4"> 头像 </label>
+									<div class="col-sm-9">
+										<label class="ace-file-input col-sm-5">
+											<input type="file" name="img">
+											<span class="ace-file-container" data-title="选择">
+												<span class="ace-file-name" data-title="No File ...">
+													<i class=" ace-icon fa fa-upload"></i>
+												</span>
+											</span>
+										</label>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="col-md-offset-2 col-md-9">
+									<button class="btn btn-info" type="submit"><i class="icon-ok bigger-110"></i>提交</button>&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="reset"><i class="icon-undo bigger-110"></i>重置</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{include file="common/footer"}
+	</div>
+	{include file="common/js"}
+</body>
+</html>

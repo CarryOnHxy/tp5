@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+{include file="common/head" title="新增职位"}
+<body class="no-skin">
+	{include file="common/navbar"}
+	<div class="main-container" id="main-container">
+		{include file="common/sidebar"}
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="/">首页</a>
+						</li>
+						{notempty name="departinfo"}
+						<li>
+							<a href="{:url('department/index')}">{$departinfo['depart_name']}</a>
+						</li>
+						{/notempty}
+						<li>
+							<a href="{:url('position/index')}">职位管理</a>
+						</li>
+						<li class="active">新增职位</li>
+					</ul>
+				</div>
+				<div class="page-content">
+					{include file="common/settings"}
+					<div class="row">
+						<div class="col-xs-12">
+							<form class="form-horizontal" id="form" name="form" method="post">
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 所属部门 </label>
+									<div class="col-sm-9">
+										<select class="rcol-xs-10 col-sm-5" name="departid" required>
+											{empty name="departinfo"}
+											<option value="">请选择</option>
+											{foreach name="departs" item="val"}
+											<option value="{$val['id']}">{$val['depart_name']}</option>
+											{/foreach}
+											{else/}
+											<option value="{$departinfo['id']}">{$departinfo['depart_name']}</option>
+											{/empty}
+										</select>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 职位名 </label>
+									<div class="col-sm-9">
+										<input type="text" placeholder="职位名" name="name" class="col-xs-10 col-sm-5" value="" required>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">职位名称，不能为空。</span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 是否启用 </label>
+									<div class="col-sm-9">
+										<div class="radio">
+											<label>
+												<input type="radio" class="ace" name="status" value="1" checked>
+												<span class="lbl"> 是</span>
+											</label>
+											<label>
+												<input type="radio" class="ace" name="status" value="2">
+												<span class="lbl"> 否</span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-offset-2 col-md-9">
+									<button class="btn btn-info submit" type="submit"><i class="icon-ok bigger-110"></i>提交</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{include file="common/footer"}
+	</div>
+	{include file="common/js"}
+</body>
+</html>

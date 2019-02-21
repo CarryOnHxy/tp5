@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+{include file="common/head" title="编辑员工"}
+<body class="no-skin">
+	{include file="common/navbar"}
+	<div class="main-container" id="main-container">
+		{include file="common/sidebar"}
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="/">首页</a>
+						</li>
+						<li>
+							<a href="{:url('employee/index')}">员工管理</a>
+						</li>
+						<li class="active">编辑员工</li>
+					</ul>
+				</div>
+				<div class="page-content">
+					{include file="common/settings"}
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="row">
+								<div class="col-xs-12">
+							<form class="form-horizontal"  method="post">
+								
+								<input type="hidden" name="id" value="{$info['id']}">
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 所属部门 </label>
+									<div class="col-sm-9">
+											<select class="rcol-xs-10 col-sm-5" id="depart_id" name="depart_id" required>
+											<option value="">请选择</option>
+											{foreach name="departs" item="item"}
+											<option value="{$item['id']}" {if condition="$info['depart_id'] eq $item['id']"}selected{/if}>{$item['depart_name']}</option>
+											{/foreach}
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">请慎重选择部门</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 所属职位 </label>
+									<div class="col-sm-9">
+											<select class="rcol-xs-10 col-sm-5" id="position_id" name="position_id" required>
+											<option value="">请选择</option>
+											{foreach name="position" item="item"}
+											<option value="{$item['id']}" {if condition="$info['position_id'] eq $item['id']"}selected{/if}>{$item['position_name']}</option>
+											{/foreach}
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">请慎重选择职位</span>
+										</span>
+									</div>
+								</div>
+
+										<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 所属角色 </label>
+									<div class="col-sm-9">
+											<select class="rcol-xs-10 col-sm-5" id="roleid" name="role_id" required>
+											<option value="">请选择</option>
+											{foreach name="roles" item="val"}
+											<option value="{$val['id']}" {if condition="$info['role_id'] eq $val['id']"}selected{/if}>{$val['role_name']}</option>
+											{/foreach}
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">请慎重选择角色</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 直属领导 </label>
+									<div class="col-sm-9">
+											<select class="rcol-xs-10 col-sm-5" id="leader_id" name="leader_id" required>
+											<option value="">请选择</option>
+											{foreach name="users" item="val"}
+											<option value="{$val['id']}" {if condition="$info['leader_id'] eq $val['id']"}selected{/if}>{$val['real_name']}</option>
+											{/foreach}
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">请慎重选择领导</span>
+										</span>
+									</div>
+								</div>
+
+
+
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 员工工号 </label>
+									<div class="col-sm-9">
+										<input type="text" placeholder="员工工号" class="col-xs-10 col-sm-5" name="user_code" value="{$info['user_code']}">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">留空不修改</span>
+										</span>
+									</div>
+								</div>
+
+									<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 员工密码 </label>
+									<div class="col-sm-9">
+										<input type="password" placeholder="员工密码" class="col-xs-10 col-sm-5" value="" name="user_pwd">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">留空不修改</span>
+										</span>
+									</div>
+										</div>
+
+										<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 员工姓名 </label>
+									<div class="col-sm-9">
+										<input type="text" placeholder="员工姓名" class="col-xs-10 col-sm-5" value="{$info['real_name']}" name="real_name" >
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">留空不修改</span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+							
+								
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 是否启用 </label>
+									<div class="control-label no-padding-left col-sm-1">
+										<input type="hidden" name="status" value='0'>
+										<label>
+											<input class="ace ace-switch ace-switch-2" type="checkbox" name="status" checked  value='1' />
+											<span class="lbl"></span>
+										</label>
+
+									</div>
+									<span class="help-inline col-xs-12 col-sm-7">
+										<span class="middle">YES，启用；NO，禁用</span>
+									</span>
+								</div>
+
+
+								<div class="col-md-offset-2 col-md-9">
+									<button class="btn btn-info" type="submit"><i class="icon-ok bigger-110"></i>提交</button>&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="reset"><i class="icon-undo bigger-110"></i>重置</button>
+								</div>
+							</form>	
+				
+
+
+
+								</div>
+									
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{include file="common/footer"}
+	</div>
+	{include file="common/js"}
+</body>
+</html>

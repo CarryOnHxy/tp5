@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+{include file="common/head" title="部门管理列表"}
+<body class="no-skin">
+	{include file="common/navbar"}
+	<div class="main-container" id="main-container">
+		{include file="common/sidebar"}
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="/">首页</a>
+						</li>
+						<li>
+							<a href="{:url('employee/index')}">员工管理</a>
+						</li>
+						<li class="active">新增员工</li>
+					</ul>
+				</div>
+				<div class="page-content">
+					{include file="common/settings"}
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="row">
+								<div class="col-xs-12">
+							<form class="form-horizontal"  method="post">
+							
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 所属部门 </label>
+									<div class="col-sm-9">
+										<select class="rcol-xs-10 col-sm-5" name="depart_id">
+											<option value="">请选择</option>
+											{foreach name="departs" item="val"}
+											<option value="{$val['id']}">{$val['depart_name']}</option>
+											{/foreach}
+											
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">请慎重选择部门</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 所属职位 </label>
+									<div class="col-sm-9">
+										<select class="rcol-xs-10 col-sm-5" name="position_id">
+											<option value="">请选择</option>
+											{foreach name="position" item="val"}
+											<option value="{$val['id']}">{$val['position_name']}</option>
+											{/foreach}
+											
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">请慎重选择职位</span>
+										</span>
+									</div>
+								</div>
+
+										<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 所属角色 </label>
+									<div class="col-sm-9">
+										<select class="rcol-xs-10 col-sm-5" name="role_id">
+											<option value="">请选择</option>
+											{foreach name="roles" item="val"}
+											<option value="{$val['id']}">{$val['role_name']}</option>
+											{/foreach}
+											
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">请慎重选择角色</span>
+										</span>
+									</div>
+								</div>
+
+
+
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 员工工号 </label>
+									<div class="col-sm-9">
+										<input type="text" placeholder="员工工号" class="col-xs-10 col-sm-5" value="" name="user_code">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">留空不修改</span>
+										</span>
+									</div>
+								</div>
+
+									<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 员工密码 </label>
+									<div class="col-sm-9">
+										<input type="password" placeholder="员工密码" class="col-xs-10 col-sm-5" value="" name="user_pwd">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">留空不修改</span>
+										</span>
+									</div>
+								</div>
+
+										<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 员工姓名 </label>
+									<div class="col-sm-9">
+										<input type="text" placeholder="员工姓名" class="col-xs-10 col-sm-5" value="" name="real_name">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">留空不修改</span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+							
+								
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 是否启用 </label>
+									<div class="control-label no-padding-left col-sm-1">
+										<input type="hidden" name="status" value='0'>
+										<label>
+											<input class="ace ace-switch ace-switch-2" type="checkbox" name="status" checked  value='1' />
+											<span class="lbl"></span>
+										</label>
+
+									</div>
+									<span class="help-inline col-xs-12 col-sm-7">
+										<span class="middle">YES，启用；NO，禁用</span>
+									</span>
+								</div>
+
+
+								<div class="col-md-offset-2 col-md-9">
+									<button class="btn btn-info" type="submit"><i class="icon-ok bigger-110"></i>提交</button>&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="reset"><i class="icon-undo bigger-110"></i>重置</button>
+								</div>
+							</form>	
+				
+
+
+
+								</div>
+									
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{include file="common/footer"}
+	</div>
+	{include file="common/js"}
+</body>
+</html>
